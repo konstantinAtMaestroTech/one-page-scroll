@@ -1,16 +1,19 @@
 import React, { useState, useEffect, useRef, createContext, useContext } from 'react';
 import NavigationDots from './navigation-dots';
 import { FullPageScrollProps, PageProps } from './types';
+import Header from './header';
 
 // Create context to share active page state with child components
 export const PageContext = createContext<{
   activePage: number;
   totalPages: number;
+  lockMainScroll: (lock: boolean) => void;
 }>({
   activePage: 0,
   totalPages: 0,
+  lockMainScroll: () => {},
 });
-
+const logoUrl = "/maestro.png";
 const FullPageScroll: React.FC<FullPageScrollProps> = ({ 
   pages, 
   transitionDuration = 1000,
@@ -19,11 +22,17 @@ const FullPageScroll: React.FC<FullPageScrollProps> = ({
 }) => {
   const [currentPage, setCurrentPage] = useState<number>(initialPage);
   const [isScrolling, setIsScrolling] = useState<boolean>(false);
+  const [mainScrollLocked, setMainScrollLocked] = useState<boolean>(false);
   const containerRef = useRef<HTMLDivElement>(null);
+  
+  // Function to allow child components to lock/unlock the main scroll
+  const lockMainScroll = (lock: boolean) => {
+    setMainScrollLocked(lock);
+  };
   
   // Handle scroll events
   const handleScroll = (event: WheelEvent): void => {
-    if (isScrolling) return;
+    if (isScrolling || mainScrollLocked) return;
     
     event.preventDefault();
     setIsScrolling(true);
@@ -57,7 +66,7 @@ const FullPageScroll: React.FC<FullPageScrollProps> = ({
         container.removeEventListener('wheel', wheelHandler);
       };
     }
-  }, [currentPage, isScrolling]);
+  }, [currentPage, isScrolling, mainScrollLocked]);
 
   // Handle manual navigation
   const navigateToPage = (index: number): void => {
@@ -69,7 +78,12 @@ const FullPageScroll: React.FC<FullPageScrollProps> = ({
   };
 
   return (
-    <PageContext.Provider value={{ activePage: currentPage, totalPages: pages.length }}>
+    <PageContext.Provider value={{ 
+      activePage: currentPage, 
+      totalPages: pages.length,
+      lockMainScroll
+    }}>
+      <Header logoSrc={logoUrl} />
       <div className="h-screen w-screen overflow-hidden relative" ref={containerRef}>
         <div 
           className="h-full w-full transition-transform duration-1000 ease-in-out"

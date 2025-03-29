@@ -8,7 +8,7 @@ const App: React.FC = () => {
   const pages: PageProps[] = [
     {
       id: 'home',
-      bgColor: 'bg-blue-500',
+      bgColor: 'bg-[#1E1E1E]',
       children: <HomePage pageIndex={0} />
     },
     {
