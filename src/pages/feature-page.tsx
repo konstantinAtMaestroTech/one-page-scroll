@@ -100,16 +100,6 @@ const FeaturePage: React.FC<FeaturePageProps> = ({ pageIndex }) => {
     { id: 3, title: 'Smooth Transitions', description: 'Beautiful scroll-based page transitions' }
   ];
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2
-      }
-    }
-  };
-
   const itemVariants = {
     hidden: { y: 20, opacity: 0 },
     visible: { 

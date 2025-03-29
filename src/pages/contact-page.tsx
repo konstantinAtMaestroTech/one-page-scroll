@@ -53,17 +53,6 @@ const ContactPage: React.FC<ContactPageProps> = ({ pageIndex }) => {
     }
   };
 
-  const buttonVariants = {
-    hover: { 
-      scale: 1.03,
-      boxShadow: "0px 5px 15px rgba(0, 0, 0, 0.2)"
-    },
-    tap: { 
-      scale: 0.97,
-      boxShadow: "0px 2px 5px rgba(0, 0, 0, 0.1)"
-    }
-  };
-
   return (
     <div className="text-white max-w-3xl w-full px-4">
       <AnimatePresence>

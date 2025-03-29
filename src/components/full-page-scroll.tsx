@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useRef, createContext, useContext } from 'react';
+import React, { useState, useEffect, useRef, createContext} from 'react';
 import NavigationDots from './navigation-dots';
-import { FullPageScrollProps, PageProps } from './types';
+import { FullPageScrollProps} from './types';
 import Header from './header';
 
 // Create context to share active page state with child components
@@ -92,7 +92,7 @@ const FullPageScroll: React.FC<FullPageScrollProps> = ({
             transitionDuration: `${transitionDuration}ms`
           }}
         >
-          {pages.map((page, index) => (
+          {pages.map((page) => (
             <div 
               key={page.id}
               className={`h-screen w-screen flex items-center justify-center ${page.bgColor || ''} ${page.className || ''}`}
