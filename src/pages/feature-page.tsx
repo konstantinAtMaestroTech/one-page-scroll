@@ -16,6 +16,11 @@ const FeaturePage: React.FC<FeaturePageProps> = ({ pageIndex }) => {
   const [isInFeatureMode, setIsInFeatureMode] = useState(false);
   // Create a ref for the feature container
   const featureContainerRef = useRef<HTMLDivElement>(null);
+
+  // Touch state for feature navigation
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
+  const minSwipeDistance = 30;
   
   // Handle wheel events for feature navigation
   const handleFeatureScroll = (event: WheelEvent) => {
@@ -43,6 +48,53 @@ const FeaturePage: React.FC<FeaturePageProps> = ({ pageIndex }) => {
       // Otherwise, update within bounds
       return Math.max(0, Math.min(next, features.length - 1));
     });
+  };
+
+  const handleFeatureTouchStart = (e: React.TouchEvent) => {
+    if (!isActive || !isInFeatureMode) return;
+    setTouchStart(e.targetTouches[0].clientY);
+    setTouchEnd(null);
+  };
+  
+  const handleFeatureTouchMove = (e: React.TouchEvent) => {
+    if (!isActive || !isInFeatureMode) return;
+    setTouchEnd(e.targetTouches[0].clientY);
+  };
+  
+  const handleFeatureTouchEnd = () => {
+    if (!isActive || !isInFeatureMode || !touchStart || !touchEnd) return;
+    
+    // Calculate distance and direction of the swipe
+    const distance = touchStart - touchEnd;
+    const isSignificantSwipe = Math.abs(distance) >= minSwipeDistance;
+    
+    if (isSignificantSwipe) {
+      // Positive distance means swipe up (show next feature)
+      const direction = distance > 0 ? 1 : -1;
+      
+      // Update active feature index
+      setActiveFeatureIndex(prev => {
+        const next = prev + direction;
+        // If we're at the end and scrolling forward, exit feature mode
+        if (next >= features.length && direction > 0) {
+          setIsInFeatureMode(false);
+          setLockMainScroll(false); // Unlock main scroll to allow moving to next page
+          return prev;
+        }
+        // If we're at the beginning and scrolling backward, exit feature mode
+        if (next < 0 && direction < 0) {
+          setIsInFeatureMode(false);
+          setLockMainScroll(false); // Unlock main scroll to allow moving to previous page
+          return prev;
+        }
+        // Otherwise, update within bounds
+        return Math.max(0, Math.min(next, features.length - 1));
+      });
+    }
+    
+    // Reset touch coordinates
+    setTouchStart(null);
+    setTouchEnd(null);
   };
 
   useEffect(() => {
@@ -142,6 +194,9 @@ const FeaturePage: React.FC<FeaturePageProps> = ({ pageIndex }) => {
             <div 
               ref={featureContainerRef} 
               className="grid grid-cols-1 md:grid-cols-3 gap-8 relative"
+              onTouchStart={handleFeatureTouchStart}
+              onTouchMove={handleFeatureTouchMove}
+              onTouchEnd={handleFeatureTouchEnd}
             >
               {features.map((feature, index) => (
                 <motion.div 

@@ -9,10 +9,6 @@ interface HeaderProps {
 const Header: React.FC<HeaderProps> = ({ logoSrc = "/logo.svg" }) => {
   const { activePage } = useActivePage({ pageIndex: 0 });
   const isHomePage = activePage === 0;
-
-  React.useEffect(() => {
-    console.log('activePage is', activePage)
-  },[activePage])
   
   // Function to navigate to a specific page
   const navigateToPage = (pageIndex: number) => {

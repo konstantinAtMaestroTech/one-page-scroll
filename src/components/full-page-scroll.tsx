@@ -8,12 +8,14 @@ export const PageContext = createContext<{
   activePage: number;
   totalPages: number;
   lockMainScroll: (lock: boolean) => void;
+  navigateToPage: (index: number) => void;
 }>({
   activePage: 0,
   totalPages: 0,
   lockMainScroll: () => {},
+  navigateToPage: () => {},
 });
-const logoUrl = "/maestro.png";
+const logoUrl = "./maestro.png";
 const FullPageScroll: React.FC<FullPageScrollProps> = ({ 
   pages, 
   transitionDuration = 1000,
@@ -24,6 +26,54 @@ const FullPageScroll: React.FC<FullPageScrollProps> = ({
   const [isScrolling, setIsScrolling] = useState<boolean>(false);
   const [mainScrollLocked, setMainScrollLocked] = useState<boolean>(false);
   const containerRef = useRef<HTMLDivElement>(null);
+
+  // Variables to track touch movements
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
+
+  const minSwipeDistance = 50;
+
+  // Handle touch start event
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStart(e.targetTouches[0].clientY);
+    setTouchEnd(null);
+  };
+
+  // Handle touch move event
+  const handleTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientY);
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStart || !touchEnd || isScrolling || mainScrollLocked) return;
+    
+    // Calculate distance of the swipe
+    const distance = touchStart - touchEnd;
+    const isSignificantSwipe = Math.abs(distance) >= minSwipeDistance;
+    
+    if (isSignificantSwipe) {
+      setIsScrolling(true);
+      
+      // Determine direction (positive = swipe up = move down)
+      const direction = distance > 0 ? 1 : -1;
+      
+      // Calculate the next page index
+      const nextPage = Math.min(Math.max(currentPage + direction, 0), pages.length - 1);
+      
+      if (nextPage !== currentPage) {
+        setCurrentPage(nextPage);
+      }
+      
+      // Reset scroll lock after animation completes
+      setTimeout(() => {
+        setIsScrolling(false);
+      }, transitionDuration);
+    }
+    
+    // Reset touch values
+    setTouchStart(null);
+    setTouchEnd(null);
+  };
   
   // Function to allow child components to lock/unlock the main scroll
   const lockMainScroll = (lock: boolean) => {
@@ -81,35 +131,42 @@ const FullPageScroll: React.FC<FullPageScrollProps> = ({
     <PageContext.Provider value={{ 
       activePage: currentPage, 
       totalPages: pages.length,
-      lockMainScroll
+      lockMainScroll,
+      navigateToPage
     }}>
-      <Header logoSrc={logoUrl} />
-      <div className="h-screen w-screen overflow-hidden relative" ref={containerRef}>
-        <div 
-          className="h-full w-full transition-transform duration-1000 ease-in-out"
-          style={{ 
-            transform: `translateY(-${currentPage * 100}%)`,
-            transitionDuration: `${transitionDuration}ms`
-          }}
-        >
-          {pages.map((page) => (
-            <div 
-              key={page.id}
-              className={`h-screen w-screen flex items-center justify-center ${page.bgColor || ''} ${page.className || ''}`}
-            >
-              {page.children}
-            </div>
-          ))}
-        </div>
-        
-        {showNavigation && (
-          <NavigationDots 
-            pages={pages} 
-            currentPage={currentPage} 
-            navigateToPage={navigateToPage} 
-          />
-        )}
+      <div
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+      >
+        <Header logoSrc={logoUrl} />
+        <div className="h-screen w-screen overflow-hidden relative" ref={containerRef}>
+          <div 
+            className="h-full w-full transition-transform duration-1000 ease-in-out"
+            style={{ 
+              transform: `translateY(-${currentPage * 100}%)`,
+              transitionDuration: `${transitionDuration}ms`
+            }}
+          >
+            {pages.map((page) => (
+              <div 
+                key={page.id}
+                className={`h-screen w-screen flex items-center justify-center ${page.bgColor || ''} ${page.className || ''}`}
+              >
+                {page.children}
+              </div>
+            ))}
+          </div>
+          
+          {showNavigation && (
+            <NavigationDots 
+              pages={pages} 
+              currentPage={currentPage} 
+              navigateToPage={navigateToPage} 
+            />
+          )}
       </div>
+    </div>
     </PageContext.Provider>
   );
 };

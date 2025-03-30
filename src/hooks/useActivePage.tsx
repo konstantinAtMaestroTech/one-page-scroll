@@ -8,7 +8,7 @@ interface UseActivePageOptions {
 }
 
 export const useActivePage = ({ pageIndex, delay = 0 }: UseActivePageOptions) => {
-  const { activePage, totalPages, lockMainScroll } = useContext(PageContext);
+  const { activePage, totalPages, lockMainScroll, navigateToPage } = useContext(PageContext);
   const [isActive, setIsActive] = useState(false);
   const [hasBeenActive, setHasBeenActive] = useState(false);
 
@@ -35,5 +35,12 @@ export const useActivePage = ({ pageIndex, delay = 0 }: UseActivePageOptions) =>
     lockMainScroll(lock);
   };
 
-  return { isActive, hasBeenActive, setLockMainScroll, activePage, totalPages };
+  return { 
+    isActive, 
+    hasBeenActive, 
+    setLockMainScroll, 
+    activePage, 
+    totalPages,
+    navigateToPage 
+  };
 };
