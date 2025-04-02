@@ -1,3 +1,4 @@
+export { default as LandingPage } from './landing-page';
 export { default as HomePage } from './home-page';
 export { default as FeaturePage } from './feature-page';
 export { default as AboutPage } from './about-page';

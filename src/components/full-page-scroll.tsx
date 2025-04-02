@@ -33,6 +33,13 @@ const FullPageScroll: React.FC<FullPageScrollProps> = ({
 
   const minSwipeDistance = 50;
 
+  const isScrollingRef = useRef(isScrolling);
+
+  useEffect(() => {
+    isScrollingRef.current = isScrolling;
+  }, [isScrolling]);
+
+
   // Handle touch start event
   const handleTouchStart = (e: React.TouchEvent) => {
     setTouchStart(e.targetTouches[0].clientY);
@@ -120,13 +127,12 @@ const FullPageScroll: React.FC<FullPageScrollProps> = ({
 
   // Handle manual navigation
   const navigateToPage = (index: number): void => {
-    if (index !== currentPage && !isScrolling) {
+    if (index !== currentPage && !isScrollingRef.current) {
       setIsScrolling(true);
       setCurrentPage(index);
       setTimeout(() => setIsScrolling(false), transitionDuration);
     }
   };
-
   return (
     <PageContext.Provider value={{ 
       activePage: currentPage, 

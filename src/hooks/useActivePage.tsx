@@ -32,6 +32,7 @@ export const useActivePage = ({ pageIndex, delay = 0 }: UseActivePageOptions) =>
 
   // Function to lock/unlock the main scroll functionality
   const setLockMainScroll = (lock: boolean) => {
+    console.log('useActivePage lock is', lock)
     lockMainScroll(lock);
   };
 

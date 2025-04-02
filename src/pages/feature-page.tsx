@@ -24,7 +24,6 @@ const FeaturePage: React.FC<FeaturePageProps> = ({ pageIndex }) => {
   
   // Handle wheel events for feature navigation
   const handleFeatureScroll = (event: WheelEvent) => {
-    console.log('the feature scroll has been handled')
     if (!isActive || !isInFeatureMode) return;
     
     event.preventDefault();
@@ -111,10 +110,8 @@ const FeaturePage: React.FC<FeaturePageProps> = ({ pageIndex }) => {
     
     if (container && isActive && isInFeatureMode) {
       container.addEventListener('wheel', wheelHandler, { passive: false });
-      console.log('the event Listener has been added')
       return () => {
         container.removeEventListener('wheel', wheelHandler);
-        console.log('the event Listener has been removed')
       };
     }
   }, [isActive, isInFeatureMode]);
@@ -123,7 +120,6 @@ const FeaturePage: React.FC<FeaturePageProps> = ({ pageIndex }) => {
   useEffect(() => {
     if (isActive) {
       // Short delay to avoid immediate activation
-      console.log('we are about to reset the active feature index')
       const timer = setTimeout(() => {
         setIsInFeatureMode(true);
         setActiveFeatureIndex(0);
@@ -133,18 +129,8 @@ const FeaturePage: React.FC<FeaturePageProps> = ({ pageIndex }) => {
       return () => clearTimeout(timer);
     } else {
       setIsInFeatureMode(false);
-      setLockMainScroll(false); // Unlock main scroll when leaving page
     }
   }, [isActive]);
-
-  // flags
-  useEffect(() => {
-    console.log('isActive is',isActive)
-  },[isActive])
-
-  useEffect(() => {
-    console.log('isInFeatureMode is',isInFeatureMode)
-  },[isInFeatureMode])
 
   const features = [
     { id: 1, title: 'Responsive Design', description: 'Works on all devices and screen sizes' },

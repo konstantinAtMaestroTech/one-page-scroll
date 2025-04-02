@@ -1,6 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useActivePage } from '../hooks/useActivePage';
+import AnimatedSection from './animated-section';
+import { MoveRight } from 'lucide-react';
 
 interface HeaderProps {
   logoSrc?: string;
@@ -60,7 +62,7 @@ const Header: React.FC<HeaderProps> = ({ logoSrc = "/logo.svg" }) => {
 
   return (
     <motion.header 
-      className="fixed top-0 left-0 right-0 z-50 flex items-center px-8"
+      className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-12"
       initial="expanded"
       animate={isHomePage ? "expanded" : "collapsed"}
       variants={headerVariants}
@@ -79,7 +81,20 @@ const Header: React.FC<HeaderProps> = ({ logoSrc = "/logo.svg" }) => {
           className="h-12 w-auto"
         />
       </motion.div>
-      
+      <AnimatedSection 
+        delay={0.4} 
+        direction="up"
+      >
+        <motion.button 
+          className="flex w-full justify-between gap-4 border-2 border-[#FF4300] bg-transparent text-[#FF4300] font-semibold py-2 px-6 rounded-full"
+          whileHover={{ scale: 1.05, background:"#FF4300", color: 'white' }}
+          whileTap={{ scale: 0.95 }}
+          transition={{ type: "spring", stiffness: 400, damping: 17 }}
+        >
+          Get Started
+          <MoveRight/>
+        </motion.button>
+      </AnimatedSection>
     </motion.header>
   );
 };
