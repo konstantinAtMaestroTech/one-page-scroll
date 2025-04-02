@@ -44,7 +44,6 @@ const MobileFeatures: React.FC<FeaturePageProps> = ({ pageIndex }) => {
       }
       // If we're at the beginning and scrolling backward, exit feature mode
       if (next < 0 && direction < 0) {
-        setIsInFeatureMode(false);
         navigateToPage(pageIndex-1)
         return prev;
       }
@@ -183,108 +182,108 @@ const MobileFeatures: React.FC<FeaturePageProps> = ({ pageIndex }) => {
     <div className="w-screen text-center text-white px-4">
       <AnimatePresence>
         {isActive && (
-          <div
-            className='grid grid-cols-2 w-full'
-            ref={featureContainerRef}
-            onTouchStart={handleFeatureTouchStart}
-            onTouchMove={handleFeatureTouchMove}
-            onTouchEnd={handleFeatureTouchEnd}
-          >
             <div
-              className='flex flex-col justify-center items-center'
+              className='grid grid-cols-2 w-full'
+              ref={featureContainerRef}
+              onTouchStart={handleFeatureTouchStart}
+              onTouchMove={handleFeatureTouchMove}
+              onTouchEnd={handleFeatureTouchEnd}
             >
-              <div className="overflow-hidden w-full">
-                <div className="flex flex-col h-[500px]">
-                  {features.map((item, index) => (
-                    <motion.div
-                      key={index}
-                      className={`relative cursor-pointer p-4`}
-                      layout
-                      animate={{
-                        flex: activeFeatureIndex === index ? 2 : 1,
-                      }}
-                      transition={{
-                        type: "spring",
-                        stiffness: 300,
-                        damping: 30,
-                      }}
-                    >
-                      <motion.h3
-                        className={`font-bold transition-colors text-3xl text-left duration-300 ${
-                          activeFeatureIndex === index ? "text-[#FF4300]" : "text-gray-600"
-                        }`}
-                        layout="position"
-                      >
-                        {item.title}
-                      </motion.h3>
-
-                      <AnimatePresence>
-                        {activeFeatureIndex === index && (
-                          <motion.p
-                            className="text-white text-2xl text-left mt-2"
-                            initial={{ opacity: 0, height: 0 }}
-                            animate={{ opacity: 1, height: "auto" }}
-                            exit={{ opacity: 0, height: 0 }}
-                            transition={{
-                              opacity: { duration: 0.2 },
-                              height: { duration: 0.3 },
-                            }}
-                          >
-                            {item.description}
-                          </motion.p>
-                        )}
-                      </AnimatePresence>
-                    </motion.div>
-                  ))}
-                </div>
-              </div>
-              {isInFeatureMode && (
-                <div className="flex justify-center mt-8 space-x-2">
-                  {features.map((_, index) => (
-                    <button
-                      key={index}
-                      className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                        index === activeFeatureIndex ? 'bg-white scale-125' : 'bg-white bg-opacity-50'
-                      }`}
-                      onClick={() => setActiveFeatureIndex(index)}
-                      aria-label={`View feature ${index + 1}`}
-                    />
-                  ))}
-                </div>
-              )}
-            </div>
-            <div className='flex justify-center items-center'>
-              <motion.div
-                key={features[activeFeatureIndex].id}
-                className="flex flex-col p-6"
-                custom={activeFeatureIndex >= previousIndex ? 1 : -1}
-                variants={slideVariants}
-                initial="enter"
-                animate="center"
-                exit="exit"
-                transition={{ type: "tween", duration: 0.4, ease: "easeIn" }}
-                onAnimationComplete={() => {
-                  if (videoRef.current) {
-                    videoRef.current.play().catch(err => 
-                      console.error("Video autoplay failed:", err)
-                    );
-                  }
-                }}
+              <div
+                className='flex flex-col justify-center items-center'
               >
-                <video 
-                    ref={videoRef}
-                    className='max-h-full max-w-full object-contain'
-                    loop
-                    muted
-                    playsInline
-                    autoPlay
+                <div className="overflow-hidden w-full">
+                  <div className="flex flex-col h-[500px]">
+                    {features.map((item, index) => (
+                      <motion.div
+                        key={index}
+                        className={`relative cursor-pointer p-4`}
+                        layout
+                        animate={{
+                          flex: activeFeatureIndex === index ? 2 : 1,
+                        }}
+                        transition={{
+                          type: "spring",
+                          stiffness: 300,
+                          damping: 30,
+                        }}
+                      >
+                        <motion.h3
+                          className={`font-bold transition-colors text-3xl text-left duration-300 ${
+                            activeFeatureIndex === index ? "text-[#FF4300]" : "text-gray-600"
+                          }`}
+                          layout="position"
+                        >
+                          {item.title}
+                        </motion.h3>
+
+                        <AnimatePresence>
+                          {activeFeatureIndex === index && (
+                            <motion.p
+                              className="text-white text-2xl text-left mt-2"
+                              initial={{ opacity: 0, height: 0 }}
+                              animate={{ opacity: 1, height: "auto" }}
+                              exit={{ opacity: 0, height: 0 }}
+                              transition={{
+                                opacity: { duration: 0.2 },
+                                height: { duration: 0.3 },
+                              }}
+                            >
+                              {item.description}
+                            </motion.p>
+                          )}
+                        </AnimatePresence>
+                      </motion.div>
+                    ))}
+                  </div>
+                </div>
+                {isInFeatureMode && (
+                  <div className="flex justify-center mt-8 space-x-2">
+                    {features.map((_, index) => (
+                      <button
+                        key={index}
+                        className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                          index === activeFeatureIndex ? 'bg-white scale-125' : 'bg-white bg-opacity-50'
+                        }`}
+                        onClick={() => setActiveFeatureIndex(index)}
+                        aria-label={`View feature ${index + 1}`}
+                      />
+                    ))}
+                  </div>
+                )}
+              </div>
+              <div className='flex justify-center items-center'>
+                <motion.div
+                  key={features[activeFeatureIndex].id}
+                  className="flex flex-col p-6"
+                  custom={activeFeatureIndex >= previousIndex ? 1 : -1}
+                  variants={slideVariants}
+                  initial="enter"
+                  animate="center"
+                  exit="exit"
+                  transition={{ type: "tween", duration: 0.4, ease: "easeIn" }}
+                  onAnimationComplete={() => {
+                    if (videoRef.current) {
+                      videoRef.current.play().catch(err => 
+                        console.error("Video autoplay failed:", err)
+                      );
+                    }
+                  }}
                 >
-                    <source src={features[activeFeatureIndex].video} type="video/webm" />
-                    Your browser does not support the video tag.
-                </video>
-              </motion.div>
+                  <video 
+                      ref={videoRef}
+                      className='max-h-full max-w-full object-contain'
+                      loop
+                      muted
+                      playsInline
+                      autoPlay
+                  >
+                      <source src={features[activeFeatureIndex].video} type="video/webm" />
+                      Your browser does not support the video tag.
+                  </video>
+                </motion.div>
+              </div>
             </div>
-          </div>
         )}
       </AnimatePresence>
     </div>
