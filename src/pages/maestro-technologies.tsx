@@ -7,7 +7,7 @@ interface AboutPageProps {
   pageIndex: number;
 }
 
-const AboutPage: React.FC<AboutPageProps> = ({ pageIndex }) => {
+const MaestroBio: React.FC<AboutPageProps> = ({ pageIndex }) => {
   const { isActive } = useActivePage({ pageIndex, delay: 300 });
 
   return (
@@ -43,4 +43,4 @@ const AboutPage: React.FC<AboutPageProps> = ({ pageIndex }) => {
   );
 };
 
-export default AboutPage;
+export default MaestroBio;

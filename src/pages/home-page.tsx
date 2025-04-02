@@ -37,7 +37,6 @@ const HomePage: React.FC<HomePageProps> = ({ pageIndex }) => {
       const next = prev + direction;
       // If we're at the end and scrolling forward, exit feature mode
       if (next >= features.length && direction > 0) {
-        console.log('next page')
         setIsInFeatureMode(false);
         navigateToPage(pageIndex+1)
         return prev;

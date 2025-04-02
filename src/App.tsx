@@ -1,6 +1,14 @@
 import React from 'react';
 import FullPageScroll from './components/full-page-scroll';
-import { HomePage, FeaturePage, AboutPage, ContactPage, LandingPage, MaestroBio } from './pages';
+import { 
+  HomePage, 
+  FeaturePage, 
+  AboutPage, 
+  ContactPage, 
+  LandingPage, 
+  MaestroBio,
+  MobileFeatures 
+} from './pages';
 import { PageProps } from './components/types';
 
 const App: React.FC = () => {
@@ -17,24 +25,29 @@ const App: React.FC = () => {
       children: <MaestroBio pageIndex={1} />,
     },
     {
+      id: 'maestro-bio',
+      bgColor: 'bg-[#1E1E1E]',
+      children: <MobileFeatures pageIndex={2} />,
+    },
+    {
       id: 'home',
       bgColor: 'bg-[#1E1E1E]',
-      children: <HomePage pageIndex={2} />
+      children: <HomePage pageIndex={3} />
     },
     {
       id: 'features',
       bgColor: 'bg-red-500',
-      children: <FeaturePage pageIndex={3} />
+      children: <FeaturePage pageIndex={4} />
     },
     {
       id: 'about',
       bgColor: 'bg-green-500',
-      children: <AboutPage pageIndex={4} />
+      children: <AboutPage pageIndex={5} />
     },
     {
       id: 'contact',
       bgColor: 'bg-purple-500',
-      children: <ContactPage pageIndex={5} />
+      children: <ContactPage pageIndex={6} />
     }
   ];
 
