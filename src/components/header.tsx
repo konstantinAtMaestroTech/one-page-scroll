@@ -9,18 +9,9 @@ interface HeaderProps {
 }
 
 const Header: React.FC<HeaderProps> = ({ logoSrc = "/logo.svg" }) => {
-  const { activePage } = useActivePage({ pageIndex: 0 });
+  const { activePage, navigateToPage } = useActivePage({ pageIndex: 0 });
   const isHomePage = activePage === 0;
-  
-  // Function to navigate to a specific page
-  const navigateToPage = (pageIndex: number) => {
-    // This would be implemented with the navigation API from FullPageScroll
-    // For now, we'll use anchor links
-    const element = document.getElementById(`page-${pageIndex}`);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
+  const isSpecialPage = activePage === 5;
   
   // Header animation variants
   const headerVariants = {
@@ -60,6 +51,26 @@ const Header: React.FC<HeaderProps> = ({ logoSrc = "/logo.svg" }) => {
     }
   };
 
+  // Button color variants for the delayed color change
+  const buttonColorVariants = {
+    default: {
+      borderColor: "#FF4300",
+      color: "#FF4300",
+      transition: {
+        duration: 0.5,
+        ease: "easeInOut"
+      }
+    },
+    special: {
+      borderColor: "white",
+      color: "white",
+      transition: {
+        duration: 0.5,
+        ease: "easeInOut",
+      }
+    }
+  };
+
   return (
     <motion.header 
       className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-12"
@@ -86,10 +97,19 @@ const Header: React.FC<HeaderProps> = ({ logoSrc = "/logo.svg" }) => {
         direction="up"
       >
         <motion.button 
-          className="flex w-full justify-between gap-4 border-2 border-[#FF4300] bg-transparent text-[#FF4300] font-semibold py-2 px-6 rounded-full"
-          whileHover={{ scale: 1.05, background:"#FF4300", color: 'white' }}
+          className="flex w-full justify-between gap-4 border-2 bg-transparent font-semibold py-2 px-6 rounded-full"
+          initial="default"
+          animate={isSpecialPage ? "special" : "default"}
+          variants={buttonColorVariants}
+          whileHover={{ 
+            scale: 1.05, 
+            background: isSpecialPage ? "white" : "#FF4300", 
+            color: isSpecialPage ? "#FF4300" : "white",
+            borderColor: isSpecialPage ? "white" : "#FF4300"
+          }}
           whileTap={{ scale: 0.95 }}
           transition={{ type: "spring", stiffness: 400, damping: 17 }}
+          onClick={() => navigateToPage(6)}
         >
           Get Started
           <MoveRight/>

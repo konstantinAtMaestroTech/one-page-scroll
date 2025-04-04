@@ -7,8 +7,8 @@ interface FeaturePageProps {
 }
 
 const MobileFeatures: React.FC<FeaturePageProps> = ({ pageIndex }) => {
-  const { isActive, setLockMainScroll, navigateToPage } = useActivePage({ pageIndex, delay: 300 });
-  
+  const { isActive, previousPage, setLockMainScroll, navigateToPage } = useActivePage({ pageIndex, delay: 300 });
+  const videoRef = React.useRef<HTMLVideoElement>(null);
   // State to track which feature is highlighted
   const [activeFeatureIndex, setActiveFeatureIndex] = useState(0);
   const [previousIndex, setPreviousIndex] = useState(0);
@@ -21,8 +21,6 @@ const MobileFeatures: React.FC<FeaturePageProps> = ({ pageIndex }) => {
   const [touchStart, setTouchStart] = useState<number | null>(null);
   const [touchEnd, setTouchEnd] = useState<number | null>(null);
   const minSwipeDistance = 30;
-
-  const videoRef = React.useRef<HTMLVideoElement>(null);
   
   // Handle wheel events for feature navigation
   const handleFeatureScroll = (event: WheelEvent) => {
@@ -119,20 +117,30 @@ const MobileFeatures: React.FC<FeaturePageProps> = ({ pageIndex }) => {
     }
   }, [isActive, isInFeatureMode]);
 
+  useEffect(() => {
+    setPreviousIndex(activeFeatureIndex);
+  }, [activeFeatureIndex]);
+
   // Enter feature mode when the page becomes active
   useEffect(() => {
     if (isActive) {
       // Short delay to avoid immediate activation
       setIsInFeatureMode(true);
       setLockMainScroll(true); // Lock main scroll when entering feature mode
+      if (previousPage !== null) {
+        if (previousPage < pageIndex) {
+          // Coming from a previous page (scrolling down)
+          setPreviousIndex(0);
+          setActiveFeatureIndex(0);
+        } else {
+          // Coming from a next page (scrolling up)
+          setPreviousIndex(features.length); // Set to length so it appears to come from after the last feature
+        }
+      }
     } else {
       setIsInFeatureMode(false);
     }
   }, [isActive]);
-
-  useEffect(() => {
-    setPreviousIndex(activeFeatureIndex);
-  }, [activeFeatureIndex]);
 
   const features = [
     { 

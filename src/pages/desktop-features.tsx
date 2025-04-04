@@ -8,7 +8,7 @@ interface HomePageProps {
 }
 
 const DesktopFeatures: React.FC<HomePageProps> = ({ pageIndex }) => {
-  const { isActive, setLockMainScroll, navigateToPage } = useActivePage({ pageIndex });
+  const { isActive, previousPage, setLockMainScroll, navigateToPage } = useActivePage({ pageIndex });
   const videoRef = React.useRef<HTMLVideoElement>(null);
   // State to track which feature is highlighted
   const [activeFeatureIndex, setActiveFeatureIndex] = React.useState(0);
@@ -44,10 +44,9 @@ const DesktopFeatures: React.FC<HomePageProps> = ({ pageIndex }) => {
       // If we're at the beginning and scrolling backward, exit feature mode
       if (next < 0 && direction < 0) {
         navigateToPage(pageIndex-1)
-        return 0;
+        return prev;
       }
       // Otherwise, update within bounds
-      console.log('next feature')
       return Math.max(0, Math.min(next, features.length - 1));
     });
   };
@@ -128,6 +127,16 @@ const DesktopFeatures: React.FC<HomePageProps> = ({ pageIndex }) => {
     if (isActive) {
       setIsInFeatureMode(true);
       setLockMainScroll(true); // Lock main scroll when entering feature mode
+      if (previousPage !== null) {
+        if (previousPage < pageIndex) {
+          // Coming from a previous page (scrolling down)
+          setPreviousIndex(0);
+          setActiveFeatureIndex(0);
+        } else {
+          // Coming from a next page (scrolling up)
+          setPreviousIndex(features.length); // Set to length so it appears to come from after the last feature
+        }
+      }
     } else {
       setIsInFeatureMode(false);
     }
@@ -187,13 +196,15 @@ const DesktopFeatures: React.FC<HomePageProps> = ({ pageIndex }) => {
             onTouchMove={handleFeatureTouchMove}
             onTouchEnd={handleFeatureTouchEnd}
           >
-
             <div className='flex w-full h-full'>
               <AnimatePresence
                 custom={activeFeatureIndex}
                 mode="wait"
               >
                 {isInFeatureMode && (
+                  <div
+                    className='flex w-full flex-col justify-center items-center'
+                  >
                     <motion.div
                       key={features[activeFeatureIndex].id}
                       className="grid grid-rows-3 w-full h-full"
@@ -227,7 +238,7 @@ const DesktopFeatures: React.FC<HomePageProps> = ({ pageIndex }) => {
                         </div>
                       </div>
                       <div
-                        className='flex flex-col'
+                        className='flex flex-col h-fit'
                       >
                         <div
                           className='text-[#FF4300] font-bold text-4xl p-4 flex justify-center content-center'
@@ -239,8 +250,21 @@ const DesktopFeatures: React.FC<HomePageProps> = ({ pageIndex }) => {
                         >
                           {features[activeFeatureIndex].description}
                         </div>
+                        <div className="flex justify-center mt-8 space-x-2">
+                          {features.map((_, index) => (
+                            <button
+                              key={index}
+                              className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                                index === activeFeatureIndex ? 'bg-white scale-125' : 'bg-white bg-opacity-50'
+                              }`}
+                              onClick={() => setActiveFeatureIndex(index)}
+                              aria-label={`View feature ${index + 1}`}
+                            />
+                          ))}
+                        </div>
                       </div>
                     </motion.div>
+                  </div>
                 )}
               </AnimatePresence>
             </div>

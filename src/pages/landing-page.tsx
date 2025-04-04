@@ -9,7 +9,7 @@ interface HomePageProps {
 }
 
 const LandingPage: React.FC<HomePageProps> = ({ pageIndex }) => {
-    const { isActive } = useActivePage({ pageIndex });
+    const { isActive, navigateToPage } = useActivePage({ pageIndex });
     const videoRef1 = React.useRef<HTMLVideoElement>(null);
     const videoRef2 = React.useRef<HTMLVideoElement>(null);
     
@@ -55,6 +55,7 @@ const LandingPage: React.FC<HomePageProps> = ({ pageIndex }) => {
                             whileHover={{ scale: 1.05, background:"#FF4300", color: 'white' }}
                             whileTap={{ scale: 0.95 }}
                             transition={{ type: "spring", stiffness: 400, damping: 17 }}
+                            onClick={() => navigateToPage(6)}
                         >
                             Get Started
                             <MoveRight/>
