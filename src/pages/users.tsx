@@ -24,7 +24,7 @@ const Users: React.FC<AboutPageProps> = ({ pageIndex }) => {
               >
                 <div className="grid grid-cols-2 text-left text-4xl p-6 items-start">
                   <p className="pr-8">
-                    For <span className='font-bold'>fabricators</span> and <span className='font-bold'>manufacturers</span> and <span className='font-bold'>installers</span>: optimise your operations 
+                    For <span className='font-bold'>fabricators</span>, <span className='font-bold'>manufacturers</span> and <span className='font-bold'>installers</span>: optimise your operations 
                   </p>
                   <p className="pl-8">
                     For <span className="font-bold">General Contractors</span>, <span className="font-bold">Project Managers</span> and <span className='font-bold'>Developers</span>: master the complexity of your jobsite

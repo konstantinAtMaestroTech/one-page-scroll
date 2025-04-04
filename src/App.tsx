@@ -1,8 +1,7 @@
 import React from 'react';
 import FullPageScroll from './components/full-page-scroll';
 import { 
-  AboutPage, 
-  ContactPage, 
+  GetStarted, 
   LandingPage, 
   MaestroBio,
   MobileFeatures,
@@ -25,12 +24,12 @@ const App: React.FC = () => {
       children: <MaestroBio pageIndex={1} />,
     },
     {
-      id: 'maestro-bio',
+      id: 'mobile-features',
       bgColor: 'bg-[#1E1E1E]',
       children: <MobileFeatures pageIndex={2} />,
     },
     {
-      id: 'maestro-bio',
+      id: 'desktop-features',
       bgColor: 'bg-[#1E1E1E]',
       children: <DesktopFeatures pageIndex={3} />,
     },
@@ -41,8 +40,8 @@ const App: React.FC = () => {
     },
     {
       id: 'contact',
-      bgColor: 'bg-purple-500',
-      children: <ContactPage pageIndex={6} />
+      bgColor: 'bg-[#1E1E1E]',
+      children: <GetStarted pageIndex={5}/>
     }
   ];
 

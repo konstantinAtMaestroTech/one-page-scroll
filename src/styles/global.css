@@ -1,1 +1,51 @@
 @import "tailwindcss";
+
+/* Fix for autofill background */
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus {
+  -webkit-text-fill-color: white;
+  -webkit-box-shadow: 0 0 0px 1000px #1E1E1E inset;
+  transition: background-color 5000s ease-in-out 0s;
+  caret-color: white !important;
+}
+
+/* Fix for text cursor/caret color */
+input, textarea, [contenteditable] {
+  caret-color: white;
+}
+
+/* Fix for spelling errors */
+input:not(:focus):not(:placeholder-shown):invalid,
+textarea:not(:focus):not(:placeholder-shown):invalid {
+  --tw-shadow: 0 0 0 2px #FF4300;
+  --tw-ring-color: rgba(255, 67, 0, 0.5);
+}
+
+/* Fix for focus ring */
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  color: white;
+}
+
+/* Fix for text selection color */
+::selection {
+  background-color: rgba(255, 67, 0, 0.3);
+  color: white;
+}
+
+/* Fix for spell-check underlines */
+input::spelling-error, textarea::spelling-error {
+  text-decoration-color: #FF4300;
+}
+
+/* Make sure all input text is white */
+input, textarea, select {
+    color: white !important;
+}
+  
+/* Style for input placeholders */
+::placeholder {
+    color: rgb(209, 213, 219) !important;
+    opacity: 1;
+}

@@ -32,35 +32,37 @@ const LandingPage: React.FC<HomePageProps> = ({ pageIndex }) => {
               className='h-screen w-screen grid grid-rows-3'
             >
                 <div>
-                <AnimatedSection
-                    direction='left'
-                    duration={1}
-                    delay={0.2}
-                    className='px-8 h-full w-full flex flex-col items-center justify-end gap-4'
-                >
-                    <div>
-                        <h1 className="text-5xl font-bold text-white text-center">
-                            From factory floor to final installation
-                        </h1>
-                        <h2 
-                            className="text-4xl text-white max-w-5xl text-center"
-                        >
-                            <span className='text-[#FF4300]'>Maestro Pilot</span> bridges production data and site execution for a faster build
-                        </h2>
-                    </div>
-                    <motion.button 
-                        className="flex justify-between gap-4 border-2 border-[#FF4300] bg-transparent text-[#FF4300] font-semibold py-2 px-6 rounded-full"
-                        whileHover={{ scale: 1.05, background:"#FF4300", color: 'white' }}
-                        whileTap={{ scale: 0.95 }}
-                        transition={{ type: "spring", stiffness: 400, damping: 17 }}
+                    <AnimatedSection
+                        direction='left'
+                        duration={1}
+                        delay={0.2}
+                        className='px-8 h-full w-full flex flex-col items-center justify-end gap-4'
                     >
-                        Get Started
-                        <MoveRight/>
-                    </motion.button>
-                </AnimatedSection>
+                        <div
+                            className='flex flex-col gap-3'
+                        >
+                            <h1 className="text-5xl font-bold text-white text-center">
+                                From factory floor to final installation
+                            </h1>
+                            <h2 
+                                className="text-4xl text-white max-w-5xl text-center"
+                            >
+                                <span className='text-[#FF4300]'>Maestro Pilot</span> bridges production data and site execution for a faster build
+                            </h2>
+                        </div>
+                        <motion.button 
+                            className="flex justify-between gap-4 border-2 border-[#FF4300] bg-transparent text-[#FF4300] font-semibold py-2 px-6 rounded-full"
+                            whileHover={{ scale: 1.05, background:"#FF4300", color: 'white' }}
+                            whileTap={{ scale: 0.95 }}
+                            transition={{ type: "spring", stiffness: 400, damping: 17 }}
+                        >
+                            Get Started
+                            <MoveRight/>
+                        </motion.button>
+                    </AnimatedSection>
                 </div>
                 <div className='row-span-2 relative flex justify-center items-center'>
-                    <div className='absolute inset-3 flex justify-center items-center'>
+                    <div className='absolute inset-8 flex justify-center items-center'>
                         <video 
                             ref={videoRef2}
                             className='max-h-full max-w-full object-contain'
@@ -73,7 +75,7 @@ const LandingPage: React.FC<HomePageProps> = ({ pageIndex }) => {
                             Your browser does not support the video tag.
                         </video>
                     </div>
-                    <div className='absolute inset-10 flex justify-center items-center z-10 transform translate-x-[-270px] translate-y-[50px]'>
+                    <div className='absolute inset-12 flex justify-center items-center z-10 transform translate-x-[-270px] translate-y-[50px]'>
                         <video 
                             ref={videoRef1}
                             className='max-h-full max-w-full object-contain'
