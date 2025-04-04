@@ -1,7 +1,8 @@
 import React from 'react';
 import FullPageScroll from './components/full-page-scroll';
 import { 
-  GetStarted, 
+  GetStarted,
+  KeyPoints, 
   LandingPage, 
   MaestroBio,
   MobileFeatures,
@@ -39,9 +40,14 @@ const App: React.FC = () => {
       children: <Users pageIndex={4} />
     },
     {
+      id: 'key-points',
+      bgColor: 'bg-[#FF4300]',
+      children: <KeyPoints pageIndex={5}/>
+    },
+    {
       id: 'contact',
       bgColor: 'bg-[#1E1E1E]',
-      children: <GetStarted pageIndex={5}/>
+      children: <GetStarted pageIndex={6}/>
     }
   ];
 

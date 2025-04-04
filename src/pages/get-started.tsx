@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { AnimatePresence } from 'framer-motion';
 import AnimatedSection from '../components/animated-section';
 import { useActivePage } from '../hooks/useActivePage';
 import Select from 'react-select';
