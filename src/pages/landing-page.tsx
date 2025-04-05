@@ -17,7 +17,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ pageIndex }) => {
 }
 
 const LandingPageMobile: React.FC<LandingPageProps> = ({ pageIndex }) => {
-    const { isActive, navigateToPage } = useActivePage({ pageIndex });
+    const { isActive } = useActivePage({ pageIndex });
     const videoRef1 = React.useRef<HTMLVideoElement>(null);
     const videoRef2 = React.useRef<HTMLVideoElement>(null);
 
