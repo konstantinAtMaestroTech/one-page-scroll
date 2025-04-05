@@ -18,17 +18,19 @@ const MaestroBioMobile: React.FC<MaestroBioProps> = ({ pageIndex }) => {
   const { isActive } = useActivePage({ pageIndex, delay: 300 });
 
   return (
-    <div className="h-full w-full text-left text-white px-10">
+    <div className="h-svh w-full text-left text-white px-10">
       <AnimatePresence>
         {isActive && (
           <>            
             <div className="grid grid-rows-3 w-full h-full">
                 <AnimatedSection 
-                direction="right" 
-                delay={0.5}
-                className='mt-20'
+                  direction="right" 
+                  delay={0.5}
+                  className='mt-20'
                 >
-                    <div className="text-left text-5xl font-bold">
+                    <div 
+                      className="text-left text-4xl font-bold"
+                    >
                     <h3>
                         Built by practitioners, for practitioners.
                     </h3>

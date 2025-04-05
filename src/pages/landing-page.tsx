@@ -37,9 +37,9 @@ const LandingPageMobile: React.FC<LandingPageProps> = ({ pageIndex }) => {
         <AnimatePresence>
             {isActive && (
                 <div 
-                    className='h-svh w-screen grid grid-rows-2 bg-amber-400 mb-7'
+                    className='h-svh w-screen grid grid-rows-2'
                 >
-                    {/* <div>
+                    <div>
                         <AnimatedSection
                             direction='left'
                             duration={1}
@@ -58,16 +58,6 @@ const LandingPageMobile: React.FC<LandingPageProps> = ({ pageIndex }) => {
                                     <span className='text-[#FF4300]'>MAESTRO PILOT</span> bridges production data and site execution for a faster build
                                 </h2>
                             </div>
-                            <motion.button 
-                                className="flex justify-between gap-4 border-2 border-[#FF4300] bg-transparent text-[#FF4300] font-semibold py-2 px-6 rounded-full"
-                                whileHover={{ scale: 1.05, background:"#FF4300", color: 'white' }}
-                                whileTap={{ scale: 0.95 }}
-                                transition={{ type: "spring", stiffness: 400, damping: 17 }}
-                                onClick={() => navigateToPage(6)}
-                            >
-                                Get Started
-                                <MoveRight/>
-                            </motion.button>
                         </AnimatedSection>
                     </div>
                     <div className='relative flex justify-center items-center'>
@@ -97,7 +87,7 @@ const LandingPageMobile: React.FC<LandingPageProps> = ({ pageIndex }) => {
                                 Your browser does not support the video tag.
                             </video>
                         </div>
-                    </div> */}
+                    </div>
                 </div>
         )}
         </AnimatePresence>
