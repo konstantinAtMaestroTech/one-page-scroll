@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef, createContext} from 'react';
 import NavigationDots from './navigation-dots';
 import { FullPageScrollProps} from './types';
+import { useIsMobile } from '../hooks/useIsMobile';
 import Header from './header';
 
 // Create context to share active page state with child components
@@ -26,6 +27,7 @@ const FullPageScroll: React.FC<FullPageScrollProps> = ({
   const [isScrolling, setIsScrolling] = useState<boolean>(false);
   const [mainScrollLocked, setMainScrollLocked] = useState<boolean>(false);
   const containerRef = useRef<HTMLDivElement>(null);
+  const isMobile = useIsMobile()
 
   // Variables to track touch movements
   const [touchStart, setTouchStart] = useState<number | null>(null);
@@ -147,14 +149,14 @@ const FullPageScroll: React.FC<FullPageScrollProps> = ({
       >
         <Header logoSrc={logoUrl} />
         <div 
-          className="h-screen w-screen overflow-hidden relative"
+          className={`${isMobile ? 'h-svh' : 'h-screen'} w-screen overflow-hidden relative`}
 
           ref={containerRef}
         >
           <div 
-            className="h-full w-full transition-transform duration-1000 ease-in-out"
+            className={`${isMobile ? 'h-svh' : 'h-full'} w-full transition-transform duration-1000 ease-in-out`}
             style={{ 
-              transform: `translateY(-${currentPage * 100}%)`,
+              transform: `translateY(-${currentPage * 100}${isMobile ? 'svh' : '%'})`,
               transitionDuration: `${transitionDuration}ms`
             }}
           >
