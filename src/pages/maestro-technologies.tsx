@@ -22,7 +22,7 @@ const MaestroBioMobile: React.FC<MaestroBioProps> = ({ pageIndex }) => {
       <AnimatePresence>
         {isActive && (
           <>            
-            <div className="grid grid-rows-3 w-full h-full">
+            <div className="grid grid-rows-3 w-full h-svh">
                 <AnimatedSection 
                   direction="right" 
                   delay={0.5}
