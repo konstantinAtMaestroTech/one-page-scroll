@@ -147,7 +147,8 @@ const FullPageScroll: React.FC<FullPageScrollProps> = ({
       >
         <Header logoSrc={logoUrl} />
         <div 
-          className="h-svh w-screen overflow-hidden relative"
+          className="h-screen w-screen overflow-hidden relative"
+
           ref={containerRef}
         >
           <div 
@@ -160,7 +161,7 @@ const FullPageScroll: React.FC<FullPageScrollProps> = ({
             {pages.map((page) => (
               <div 
                 key={page.id}
-                className={`h-screen w-screen flex items-center justify-center ${page.bgColor || ''} ${page.className || ''}`}
+                className={`h-dvh w-screen flex items-center justify-center ${page.bgColor || ''} ${page.className || ''}`}
               >
                 {page.children}
               </div>
