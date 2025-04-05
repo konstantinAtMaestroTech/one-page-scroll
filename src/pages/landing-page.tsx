@@ -37,7 +37,7 @@ const LandingPageMobile: React.FC<LandingPageProps> = ({ pageIndex }) => {
         <AnimatePresence>
             {isActive && (
                 <div 
-                className='h-screen w-screen grid grid-rows-2'
+                    className='h-screen w-screen grid grid-rows-2'
                 >
                     <div
                     >

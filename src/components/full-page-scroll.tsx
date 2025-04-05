@@ -146,7 +146,13 @@ const FullPageScroll: React.FC<FullPageScrollProps> = ({
         onTouchEnd={handleTouchEnd}
       >
         <Header logoSrc={logoUrl} />
-        <div className="h-screen w-screen overflow-hidden relative" ref={containerRef}>
+        <div 
+          className="h-screen w-screen overflow-hidden relative"
+          style={{ 
+            paddingBottom: 'env(safe-area-inset-bottom)',
+          }}
+          ref={containerRef}
+        >
           <div 
             className="h-full w-full transition-transform duration-1000 ease-in-out"
             style={{ 
