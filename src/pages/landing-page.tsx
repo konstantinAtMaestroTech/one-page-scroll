@@ -37,10 +37,9 @@ const LandingPageMobile: React.FC<LandingPageProps> = ({ pageIndex }) => {
         <AnimatePresence>
             {isActive && (
                 <div 
-                    className='h-screen w-screen grid grid-rows-2'
+                    className='h-screen w-screen grid grid-rows-2 bg-amber-400 mb-7'
                 >
-                    <div
-                    >
+                    {/* <div>
                         <AnimatedSection
                             direction='left'
                             duration={1}
@@ -83,23 +82,23 @@ const LandingPageMobile: React.FC<LandingPageProps> = ({ pageIndex }) => {
                             >
                                 <source src="./videos/static-pc.mp4" type="video/mp4" />
                                 Your browser does not support the video tag.
-                        </video>
-                    </div>
-                    <div className='absolute inset-20 flex justify-center items-center z-10 transform translate-x-[70px] translate-y-[40px]'>
-                        <video 
-                            ref={videoRef1}
-                            className='max-h-full max-w-full object-contain'
-                            loop
-                            muted
-                            playsInline
-                            autoPlay
-                        >
-                            <source src="./videos/webm_transparency.webm" type="video/webm" />
-                            Your browser does not support the video tag.
-                        </video>
-                    </div>
+                            </video>
+                        </div>
+                        <div className='absolute inset-20 flex justify-center items-center z-10 transform translate-x-[70px] translate-y-[40px]'>
+                            <video 
+                                ref={videoRef1}
+                                className='max-h-full max-w-full object-contain'
+                                loop
+                                muted
+                                playsInline
+                                autoPlay
+                            >
+                                <source src="./videos/webm_transparency.webm" type="video/webm" />
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                    </div> */}
                 </div>
-            </div>
         )}
         </AnimatePresence>
     );
