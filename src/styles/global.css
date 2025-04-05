@@ -49,3 +49,8 @@ input, textarea, select {
     color: rgb(209, 213, 219) !important;
     opacity: 1;
 }
+
+/* Add to your global.css file */
+body {
+  padding-bottom: env(safe-area-inset-bottom);
+}
