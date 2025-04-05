@@ -147,7 +147,7 @@ const FullPageScroll: React.FC<FullPageScrollProps> = ({
       >
         <Header logoSrc={logoUrl} />
         <div 
-          className="h-screen w-screen overflow-hidden relative"
+          className="h-dvh w-screen overflow-hidden relative"
           style={{ 
             paddingBottom: 'env(safe-area-inset-bottom)',
           }}
