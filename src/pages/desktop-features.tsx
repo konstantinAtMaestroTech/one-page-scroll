@@ -271,7 +271,6 @@ const DesktopFeaturesMobile: React.FC<DesktopPageProps> = ({pageIndex}) => {
                               <div className='absolute inset-0 flex justify-center items-center'>
                                 <video 
                                   ref={videoRef}
-                                  className='h-full'
                                   loop
                                   muted
                                   playsInline
