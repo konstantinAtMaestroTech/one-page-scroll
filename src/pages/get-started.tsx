@@ -5,6 +5,7 @@ import { useActivePage } from '../hooks/useActivePage';
 import Select from 'react-select';
 import countryList from 'react-select-country-list';
 import emailjs from '@emailjs/browser';
+import { useIsMobile } from '../hooks/useIsMobile';
 
 interface GetStartedPageProps {
   pageIndex: number;
@@ -35,6 +36,7 @@ interface EmailJSTemplateParams {
 const GetStartedPage: React.FC<GetStartedPageProps> = ({ pageIndex }) => {
 
   const { isActive, setLockMainScroll } = useActivePage({ pageIndex, delay: 300 });
+  const isMobile = useIsMobile();
 
   // Add these states to track dropdown menu open status
   const [isProfessionMenuOpen, setIsProfessionMenuOpen] = React.useState(false);
@@ -163,13 +165,15 @@ const GetStartedPage: React.FC<GetStartedPageProps> = ({ pageIndex }) => {
   };
 
   return (
-    <div className="text-center text-white px-4 w-full">
+    <div 
+      className={`${isMobile ? 'h-svh pt-20' : ''} text-center text-white px-4 w-full`}
+    >
       <AnimatePresence>
         {isActive && (
           <div
-            className='grid w-full grid-cols-2 justify-items-center'
+            className={`grid w-full ${isMobile ? '' : 'grid-cols-2'} justify-items-center`}
           >
-            <AnimatedSection
+            {!isMobile && <AnimatedSection
               className='flex flex-col w-fit justify-between items-start gap-8 text-left'
             >
                 <AnimatedSection
@@ -211,7 +215,7 @@ const GetStartedPage: React.FC<GetStartedPageProps> = ({ pageIndex }) => {
                     Start orchestrating your site
                   </span>
                 </AnimatedSection>
-            </AnimatedSection>
+            </AnimatedSection>}
             {isSuccess ? (
               <div className="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-6" role="alert">
                 <p className="font-medium">Thank you for your submission!</p>
@@ -228,7 +232,7 @@ const GetStartedPage: React.FC<GetStartedPageProps> = ({ pageIndex }) => {
                 <AnimatedSection
                   className='flex w-full justify-center items-center'
                 >
-                  <form onSubmit={handleSubmit} className="space-y-4">
+                  <form onSubmit={handleSubmit} className={`${isMobile ? '' : 'space-y-4'}`}>
                     {/* Profession Selection */}
                     <div>
                       <label htmlFor="profession" className="block mb-2 text-sm text-left font-medium text-gray-600">
@@ -506,9 +510,9 @@ const GetStartedPage: React.FC<GetStartedPageProps> = ({ pageIndex }) => {
                       <button
                         type="submit"
                         disabled={isLoading}
-                        className="w-full bg-transparent border-2 hover:bg-[#FF4300] text-white py-3 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-[#FF4300] disabled:bg-blue-300"
+                        className={`w-full ${isMobile ? 'bg-[#FF4300]' : 'bg-transparent'} border-2 hover:bg-[#FF4300] text-white py-3 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-[#FF4300] disabled:bg-blue-300`}
                       >
-                        {isLoading ? 'Submitting...' : 'Submit'}
+                        {isLoading ? 'Submitting...' : isMobile ? 'Schedule a demo' :'Submit'}
                       </button>
                     </div>
                   </form>
