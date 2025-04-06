@@ -163,7 +163,7 @@ const FullPageScroll: React.FC<FullPageScrollProps> = ({
             {pages.map((page) => (
               <div 
                 key={page.id}
-                className={`h-svh w-screen flex items-center justify-center ${page.bgColor || ''} ${page.className || ''} pb-[env(safe-area-inset-bottom)]`}
+                className={`h-svh w-screen flex items-center justify-center ${page.bgColor || ''} ${page.className || ''}`}
               >
                 {page.children}
               </div>
