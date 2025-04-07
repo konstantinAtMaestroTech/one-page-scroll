@@ -44,14 +44,12 @@ const FullPageScroll: React.FC<FullPageScrollProps> = ({
 
   // Handle touch start event
   const handleTouchStart = (e: React.TouchEvent) => {
-    e.preventDefault(); // Prevent default where possible
     setTouchStart(e.targetTouches[0].clientY);
     setTouchEnd(null);
   };
 
   // Handle touch move event
   const handleTouchMove = (e: React.TouchEvent) => {
-    e.preventDefault(); // Prevent default
     setTouchEnd(e.targetTouches[0].clientY);
   };
 
@@ -77,10 +75,6 @@ const FullPageScroll: React.FC<FullPageScrollProps> = ({
       
       // Reset scroll lock after animation completes
       setTimeout(() => {
-        if (containerRef.current) {
-          containerRef.current.scrollTop = 0;
-          containerRef.current.scrollLeft = 0;
-        }
         setIsScrolling(false);
       }, transitionDuration);
     }
@@ -155,7 +149,7 @@ const FullPageScroll: React.FC<FullPageScrollProps> = ({
       >
         <Header logoSrc={logoUrl} />
         <div 
-          className={`${isMobile ? 'h-[110svh] bg-[#1E1E1E]' : 'h-screen'} w-screen overflow-hidden relative`}
+          className={`${isMobile ? 'h-svh bg-[#1E1E1E] ' : 'h-screen'} w-screen overflow-hidden relative`}
 
           ref={containerRef}
         >

@@ -12,6 +12,7 @@ import {
 import { PageProps } from './components/types';
 
 const App: React.FC = () => {
+
   // Define pages with components as children
   const pages: PageProps[] = [
     {
@@ -52,7 +53,10 @@ const App: React.FC = () => {
   ];
 
   return (
-    <div className="App">
+    <div 
+      className="App"
+      id='app'
+    >
       <FullPageScroll 
         pages={pages} 
         transitionDuration={1000}
