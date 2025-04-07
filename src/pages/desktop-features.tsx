@@ -274,7 +274,7 @@ const DesktopFeaturesMobile: React.FC<DesktopPageProps> = ({pageIndex}) => {
                                   muted
                                   playsInline
                                 >
-                                  <source src={features[activeFeatureIndex].video} type="video/webm" />
+                                  <source src={features[activeFeatureIndex].video} type="video/mp4" />
                                 </video>
                               </div>
                             </div>
