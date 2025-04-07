@@ -502,6 +502,19 @@ const GetStartedPage: React.FC<GetStartedPageProps> = ({ pageIndex }) => {
                         <p>{error}</p>
                       </div>
                     )}
+
+                    {/* Privacy */}
+                    <span
+                      className='text-sm md:text-base'
+                    >
+                      Learn more about our
+                      {" "}
+                      <a href="https://www.maestro-tech.com/cookie-policy/" className="text-white underline"> cookies policy</a>
+                      {" "}
+                      and
+                      {" "}
+                      <a href="https://www.maestro-tech.com/privacy-policy/" className="text-white underline"> privacy policy</a>
+                    </span>
                     
                     {/* Submit Button */}
                     <div

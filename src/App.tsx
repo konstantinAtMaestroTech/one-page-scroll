@@ -1,5 +1,6 @@
 import React from 'react';
 import FullPageScroll from './components/full-page-scroll';
+import CookieConsent from "react-cookie-consent";
 import { 
   GetStarted,
   KeyPoints, 
@@ -62,6 +63,58 @@ const App: React.FC = () => {
         transitionDuration={1000}
         showNavigation={true}
       />
+      <CookieConsent
+        location="bottom"
+        buttonText="Accept"
+        declineButtonText="Decline"
+        enableDeclineButton
+        cookieName="gdpr-consent"
+        style={{ 
+          background: "#FF4300",
+          opacity: 0.9,
+          zIndex: 999, // Ensure it's above everything
+          backdropFilter: "blur(5px)" // Modern glass effect
+        }}
+        buttonStyle={{ 
+          background: "#FF4300",
+          borderWidth: 2,
+          borderColor: 'white',
+          borderStyle: 'solid',
+          color: "white", 
+          fontSize: "13px",
+          borderRadius: "4px",
+          padding: "8px 16px",
+          fontWeight: "500",
+          transition: "all 0.3s ease",
+          boxShadow: "0 0 0 0 rgba(255, 255, 255, 0.5)",
+          cursor: "pointer",
+        }}
+        declineButtonStyle={{
+          background: "#1E1E1E",
+          borderWidth: 2,
+          borderColor: '#1E1E1E',
+          borderStyle: 'solid',
+          color: "white",
+          fontSize: "13px",
+          borderRadius: "4px",
+          padding: "8px 16px",
+          fontWeight: "500",
+          marginRight: "10px",
+          cursor: "pointer",
+        }}
+        onDecline={() => {
+          // Handle decline action if needed
+        }}
+        expires={150}
+      >
+        Maestropilot.ai uses cookies to enhance your experience. Learn more about our
+        {" "}
+        <a href="https://www.maestro-tech.com/cookie-policy/" className="text-white underline"> cookies policy</a>
+        {" "}
+        and
+        {" "}
+        <a href="https://www.maestro-tech.com/privacy-policy/" className="text-white underline"> privacy policy</a>
+      </CookieConsent>
     </div>
   );
 };
