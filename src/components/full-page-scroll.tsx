@@ -71,6 +71,12 @@ const FullPageScroll: React.FC<FullPageScrollProps> = ({
       
       if (nextPage !== currentPage) {
         setCurrentPage(nextPage);
+
+        // Reset scroll position of the container
+        if (containerRef.current) {
+          containerRef.current.scrollTop = 0;
+          containerRef.current.scrollLeft = 0;
+        }
       }
       
       // Reset scroll lock after animation completes
