@@ -158,19 +158,19 @@ const DesktopFeaturesMobile: React.FC<DesktopPageProps> = ({pageIndex}) => {
       id: 1, 
       title: 'Real time tracking, wherever you are', 
       description: 'MaestroPilot is your digital boots on the ground: with live updates from the factory to the field.', 
-      video: './videos/static-pc.mp4' 
+      video: './videos/desktop-features/realtime-tracking.mp4' 
     },
     { 
       id: 2, 
       title: 'Coordinate Complex Schedules', 
       description: 'Use our component-linked Gantt to track installation tasks and manage intricate sequences, ensuring every piece falls into place.', 
-      video: './videos/static-pc.mp4' 
+      video: './videos/desktop-features/complex-schedules.mp4' 
     },
     { 
       id: 3, 
       title: 'Generate Reports in a Click', 
       description: 'Easily produce status updates or PDFs for external stakeholders—no extra software required. ', 
-      video: './videos/static-pc.mp4' 
+      video: './videos/desktop-features/generate-reports.mp4' 
     },
   ];
 
@@ -267,7 +267,7 @@ const DesktopFeaturesMobile: React.FC<DesktopPageProps> = ({pageIndex}) => {
                             <div
                               className='row-span-2 relative flex justify-center items-center'
                             >
-                              <div className='absolute inset-0 flex justify-center items-center'>
+                              <div className='absolute inset-4 flex justify-center items-center'>
                                 <video 
                                   ref={videoRef}
                                   loop
@@ -431,19 +431,19 @@ const DesktopFeaturesDesktop: React.FC<DesktopPageProps> = ({ pageIndex }) => {
       id: 1, 
       title: 'Real time tracking, wherever you are', 
       description: 'MaestroPilot is your digital boots on the ground: with live updates from the factory to the field.', 
-      video: './videos/static-pc.mp4' 
+      video: './videos/desktop-features/realtime-tracking.mp4' 
     },
     { 
       id: 2, 
       title: 'Coordinate Complex Schedules', 
       description: 'Use our component-linked Gantt to track installation tasks and manage intricate sequences, ensuring every piece falls into place.', 
-      video: './videos/static-pc.mp4' 
+      video: './videos/desktop-features/complex-schedules.mp4' 
     },
     { 
       id: 3, 
       title: 'Generate Reports in a Click', 
       description: 'Easily produce status updates or PDFs for external stakeholders—no extra software required. ', 
-      video: './videos/static-pc.mp4' 
+      video: './videos/desktop-features/generate-reports.mp4' 
     },
   ];
 
