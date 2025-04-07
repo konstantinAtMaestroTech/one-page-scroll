@@ -86,13 +86,12 @@ const DesktopFeaturesMobile: React.FC<DesktopPageProps> = ({pageIndex}) => {
         // If we're at the end and scrolling forward, exit feature mode
         if (next >= features.length && direction > 0) {
           setIsInFeatureMode(false);
-          setLockMainScroll(false); // Unlock main scroll to allow moving to next page
+          navigateToPage(pageIndex+1) // Unlock main scroll to allow moving to next page
           return prev;
         }
         // If we're at the beginning and scrolling backward, exit feature mode
         if (next < 0 && direction < 0) {
-          setIsInFeatureMode(false);
-          setLockMainScroll(false); // Unlock main scroll to allow moving to previous page
+          navigateToPage(pageIndex-1) // Unlock main scroll to allow moving to previous page
           return prev;
         }
         // Otherwise, update within bounds

@@ -149,7 +149,7 @@ const FullPageScroll: React.FC<FullPageScrollProps> = ({
       >
         <Header logoSrc={logoUrl} />
         <div 
-          className={`${isMobile ? 'h-svh bg-[#1E1E1E] ' : 'h-screen'} w-screen overflow-hidden relative`}
+          className={`${isMobile ? 'h-svh bg-[#1E1E1E]' : 'h-screen'} w-screen overflow-hidden relative`}
 
           ref={containerRef}
         >
