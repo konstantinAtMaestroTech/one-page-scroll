@@ -44,12 +44,14 @@ const FullPageScroll: React.FC<FullPageScrollProps> = ({
 
   // Handle touch start event
   const handleTouchStart = (e: React.TouchEvent) => {
+    e.preventDefault(); // Prevent default where possible
     setTouchStart(e.targetTouches[0].clientY);
     setTouchEnd(null);
   };
 
   // Handle touch move event
   const handleTouchMove = (e: React.TouchEvent) => {
+    e.preventDefault(); // Prevent default
     setTouchEnd(e.targetTouches[0].clientY);
   };
 
