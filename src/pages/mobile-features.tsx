@@ -159,19 +159,19 @@ const MobileFeaturesMobile: React.FC<MobileFeaturesProps> = ({pageIndex}) => {
       id: 1, 
       title: 'Identify Components & Track Status in One Tap',
       description: 'See the final install location at a glance, and log progress in real time—no missing parts, no guesswork.',
-      video: './videos/webm_transparency.webm' 
+      video: './videos/mobile-features/identify-component.mp4' 
     },
     { 
       id: 2, 
       title: 'Interactive Instructions at Your Crew\'s Fingertip', 
       description: 'Provide step-by-step digital directions on any device. No more paper, no more rework.',
-      video: './videos/webm_transparency.webm' 
+      video: './videos/mobile-features/interactive-detail.mp4' 
     },
     { 
       id: 3,
       title: 'Connect Data to Every Part', 
       description: 'Attach safety protocols, certifications, and specs directly to each component. Something wrong? Handle QC with component-linked chat.',
-      video: './videos/webm_transparency.webm' 
+      video: './videos/mobile-features/attachment-download.mp4' 
     }
   ];
 
@@ -268,7 +268,7 @@ const MobileFeaturesMobile: React.FC<MobileFeaturesProps> = ({pageIndex}) => {
                           <div
                             className='row-span-2 relative flex justify-center items-center'
                           >
-                            <div className='absolute inset-0 flex justify-center items-center'>
+                            <div className='absolute inset-8 flex justify-center items-center'>
                               <video 
                                 ref={videoRef}
                                 className='h-full'
@@ -276,7 +276,7 @@ const MobileFeaturesMobile: React.FC<MobileFeaturesProps> = ({pageIndex}) => {
                                 muted
                                 playsInline
                               >
-                                <source src={features[activeFeatureIndex].video} type="video/webm" />
+                                <source src={features[activeFeatureIndex].video} type="video/mp4" />
                               </video>
                             </div>
                           </div>
@@ -431,22 +431,22 @@ const MobileFeaturesDektop: React.FC<MobileFeaturesProps> = ({ pageIndex }) => {
 
   const features = [
     { 
-        id: 1, 
-        title: 'Identify Components & Track Status in One Tap',
-        description: 'See the final install location at a glance, and log progress in real time—no missing parts, no guesswork.',
-        video: './videos/webm_transparency.webm' 
+      id: 1, 
+      title: 'Identify Components & Track Status in One Tap',
+      description: 'See the final install location at a glance, and log progress in real time—no missing parts, no guesswork.',
+      video: './videos/mobile-features/identify-component.mp4' 
     },
     { 
-        id: 2, 
-        title: 'Interactive Instructions at Your Crew\'s Fingertip', 
-        description: 'Provide step-by-step digital directions on any device. No more paper, no more rework.',
-        video: './videos/webm_transparency.webm' 
+      id: 2, 
+      title: 'Interactive Instructions at Your Crew\'s Fingertip', 
+      description: 'Provide step-by-step digital directions on any device. No more paper, no more rework.',
+      video: './videos/mobile-features/interactive-detail.mp4' 
     },
     { 
-        id: 3,
-        title: 'Connect Data to Every Part', 
-        description: 'Attach safety protocols, certifications, and specs directly to each component. Something wrong? Handle QC with component-linked chat.',
-        video: './videos/webm_transparency.webm' 
+      id: 3,
+      title: 'Connect Data to Every Part', 
+      description: 'Attach safety protocols, certifications, and specs directly to each component. Something wrong? Handle QC with component-linked chat.',
+      video: './videos/mobile-features/attachment-download.mp4' 
     }
   ];
 
@@ -550,7 +550,7 @@ const MobileFeaturesDektop: React.FC<MobileFeaturesProps> = ({ pageIndex }) => {
               <div className='flex justify-center items-center'>
                 <motion.div
                   key={features[activeFeatureIndex].id}
-                  className="flex flex-col p-6"
+                  className="flex flex-col h-full w-full p-6 relative"
                   custom={activeFeatureIndex >= previousIndex ? 1 : -1}
                   variants={slideVariants}
                   initial="enter"
@@ -565,17 +565,19 @@ const MobileFeaturesDektop: React.FC<MobileFeaturesProps> = ({ pageIndex }) => {
                     }
                   }}
                 >
-                  <video 
-                      ref={videoRef}
-                      className='max-h-full max-w-full object-contain'
-                      loop
-                      muted
-                      playsInline
-                      autoPlay
-                  >
-                      <source src={features[activeFeatureIndex].video} type="video/webm" />
-                      Your browser does not support the video tag.
-                  </video>
+                  <div className="absolute inset-0 flex justify-center items-center">
+                    <video 
+                        ref={videoRef}
+                        className="h-full w-auto max-w-full object-contain"
+                        loop
+                        muted
+                        playsInline
+                        autoPlay
+                    >
+                        <source src={features[activeFeatureIndex].video} type="video/mp4" />
+                        Your browser does not support the video tag.
+                    </video>
+                  </div>
                 </motion.div>
               </div>
             </div>
