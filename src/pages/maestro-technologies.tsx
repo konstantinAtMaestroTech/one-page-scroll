@@ -48,7 +48,7 @@ const MaestroBioMobile: React.FC<MaestroBioProps> = ({ pageIndex }) => {
                   </p>
                   <p>
                     To realise the transformative potential of prefabrication design, production, and assembly activities must run in sync.
-                    MaestroPilot makes this happen with a data-driven workflow customized to your project.
+                    Maestro Pilot makes this happen with a data-driven workflow customized to your project.
                   </p>
                 </div>
               </AnimatedSection>
