@@ -176,22 +176,22 @@ const DesktopFeaturesMobile: React.FC<DesktopPageProps> = ({pageIndex}) => {
 
   const slideVariants = {
     enter: (direction: number) => ({
-      x: direction > 0 ? '100%' : '-100%',
+      y: direction > 0 ? '100%' : '-100%',
       opacity: 0
     }),
     center: {
-      x: 0,
+      y: 0,
       opacity: 1,
       transition: {
-        x: { type: "tween", duration: 0.4, ease: "easeIn" },
+        y: { type: "tween", duration: 0.4, ease: "easeIn" },
         opacity: { duration: 0.3 }
       }
     },
     exit: (direction: number) => ({
-      x: direction > 0 ? '-100%' : '100%',
+      y: direction > 0 ? '-100%' : '100%',
       opacity: 0,
       transition: {
-        x: { type: "tween", duration: 0.4, ease: "easeIn" },
+        y: { type: "tween", duration: 0.4, ease: "easeIn" },
         opacity: { duration: 0.3 }
       }
     })
@@ -218,7 +218,7 @@ const DesktopFeaturesMobile: React.FC<DesktopPageProps> = ({pageIndex}) => {
                     >
                       <motion.div
                         key={features[activeFeatureIndex].id}
-                        className="grid grid-rows-3 w-full h-svh pt-20"
+                        className="flex flex-col w-full h-svh pt-20"
                         custom={activeFeatureIndex >= previousIndex ? 1 : -1}
                         variants={slideVariants}
                         initial="enter"
@@ -235,7 +235,7 @@ const DesktopFeaturesMobile: React.FC<DesktopPageProps> = ({pageIndex}) => {
                       >
                         {activeFeatureIndex === 0 ? (
                           <div
-                            className='flex flex-col row-span-3 justify-center gap-3 pb-20'
+                            className='flex flex-col h-full justify-center gap-3 pb-20'
                           >
                             <div
                               className='text-[#FF4300] font-bold text-3xl px-4 flex text-left'
@@ -265,7 +265,7 @@ const DesktopFeaturesMobile: React.FC<DesktopPageProps> = ({pageIndex}) => {
                               </div>
                             </div>
                             <div
-                              className='row-span-2 relative flex justify-center items-center'
+                              className='h-full relative flex justify-center items-center'
                             >
                               <div className='absolute inset-4 flex justify-center items-center'>
                                 <video 

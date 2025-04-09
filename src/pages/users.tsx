@@ -21,7 +21,7 @@ const UsersMobile: React.FC<UsersPageProps> = ({pageIndex}) => {
       <AnimatePresence>
         {isActive && (
           <>            
-            <div className="flex flex-col px-6 relative">
+            <div className="flex flex-col h-full justify-center px-6 relative pb-18">
               <AnimatedSection 
                 direction="up" 
                 delay={0.5}
