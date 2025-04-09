@@ -265,9 +265,9 @@ const DesktopFeaturesMobile: React.FC<DesktopPageProps> = ({pageIndex}) => {
                               </div>
                             </div>
                             <div
-                              className='h-full relative flex justify-center items-center'
+                              className='h-full flex justify-center items-center'
                             >
-                              <div className='absolute inset-4 flex justify-center items-center'>
+                              <div className='flex justify-center items-center'>
                                 <video 
                                   ref={videoRef}
                                   loop
