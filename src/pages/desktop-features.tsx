@@ -267,9 +267,10 @@ const DesktopFeaturesMobile: React.FC<DesktopPageProps> = ({pageIndex}) => {
                             <div
                               className='h-full flex justify-center items-center'
                             >
-                              <div className='flex justify-center items-center'>
+                              <div className='flex justify-center items-center w-full h-full'>
                                 <video 
                                   ref={videoRef}
+                                  className='w-full h-full object-contain max-h-[60vh]'
                                   loop
                                   muted
                                   playsInline
