@@ -428,7 +428,7 @@ const GetStartedPage: React.FC<GetStartedPageProps> = ({ pageIndex }) => {
                         value={formData.companyName}
                         onChange={handleChange}
                         required
-                        className="w-full border border-gray-300 rounded-md py-2 px-3 bg-[#1E1E1E] text-white"
+                        className={`${isMobile ? 'py-1' : 'py-2'} w-full border border-gray-300 rounded-md px-3 bg-[#1E1E1E] text-white`}
                       />
                     </div>
                     
@@ -444,7 +444,7 @@ const GetStartedPage: React.FC<GetStartedPageProps> = ({ pageIndex }) => {
                         value={formData.firstName}
                         onChange={handleChange}
                         required
-                        className="w-full border border-gray-300 rounded-md py-2 px-3 bg-[#1E1E1E] text-white"
+                        className={`${isMobile ? 'py-1' : 'py-2'} w-full border border-gray-300 rounded-md px-3 bg-[#1E1E1E] text-white`}
                       />
                     </div>
 
@@ -460,7 +460,7 @@ const GetStartedPage: React.FC<GetStartedPageProps> = ({ pageIndex }) => {
                         value={formData.lastName}
                         onChange={handleChange}
                         required
-                        className="w-full border border-gray-300 rounded-md py-2 px-3 bg-[#1E1E1E] text-white"
+                        className={`${isMobile ? 'py-1' : 'py-2'} w-full border border-gray-300 rounded-md px-3 bg-[#1E1E1E] text-white`}
                       />
                     </div>
                     
@@ -476,7 +476,7 @@ const GetStartedPage: React.FC<GetStartedPageProps> = ({ pageIndex }) => {
                         value={formData.email}
                         onChange={handleChange}
                         required
-                        className="w-full border border-gray-300 rounded-md py-2 px-3 bg-[#1E1E1E] text-white"
+                        className={`${isMobile ? 'py-1' : 'py-2'} w-full border border-gray-300 rounded-md px-3 bg-[#1E1E1E] text-white`}
                       />
                     </div>
                     
@@ -492,7 +492,7 @@ const GetStartedPage: React.FC<GetStartedPageProps> = ({ pageIndex }) => {
                         value={formData.phone}
                         onChange={handleChange}
                         required
-                        className="w-full border border-gray-300 rounded-md py-2 px-3 bg-[#1E1E1E] text-white"
+                        className={`${isMobile ? 'py-1' : 'py-2'} w-full border border-gray-300 rounded-md px-3 bg-[#1E1E1E] text-white`}
                       />
                     </div>
                     
@@ -523,7 +523,7 @@ const GetStartedPage: React.FC<GetStartedPageProps> = ({ pageIndex }) => {
                       <button
                         type="submit"
                         disabled={isLoading}
-                        className={`w-full ${isMobile ? 'bg-[#FF4300]' : 'bg-transparent'} border-2 hover:bg-[#FF4300] text-white py-3 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-[#FF4300] disabled:bg-blue-300`}
+                        className={`w-full ${isMobile ? 'bg-[#FF4300] py-1' : 'bg-transparent py-3'} border-2 hover:bg-[#FF4300] text-white px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-[#FF4300] disabled:bg-blue-300`}
                       >
                         {isLoading ? 'Submitting...' : isMobile ? 'Schedule a demo' :'Submit'}
                       </button>
