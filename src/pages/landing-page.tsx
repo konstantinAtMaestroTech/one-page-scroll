@@ -83,8 +83,8 @@ const LandingPageMobile: React.FC<LandingPageProps> = ({ pageIndex }) => {
                                 playsInline
                                 autoPlay
                             >
-                                <source src="./videos/webm_transparency.webm" type="video/webm" />
-                                <source src="./videos/hvec_transparecny.mov" type="video/quicktime" />
+                                {/* <source src="./videos/webm_transparency.webm" type="video/webm" /> */}
+                                <source src="./videos/hvec_transparency.mov" type="video/quicktime" />
                                 Your browser does not support the video tag.
                             </video>
                         </div>
