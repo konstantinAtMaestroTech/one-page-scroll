@@ -156,18 +156,12 @@ const LandingPageDesktop: React.FC<LandingPageProps> = ({ pageIndex }) => {
                                 Your browser does not support the video tag.
                         </video>
                     </div>
-                    <div className='absolute inset-12 flex justify-center items-center z-10 transform translate-x-[-270px] translate-y-[50px]'>
-                        <video 
-                            ref={videoRef1}
+                    <div className='absolute inset-15 flex justify-center items-center z-10 transform translate-x-[70px] translate-y-[40px]'>
+                        <img 
+                            src="./images/mobile_gif.gif" 
+                            alt="Interactive mobile animation"
                             className='max-h-full max-w-full object-contain'
-                            loop
-                            muted
-                            playsInline
-                            autoPlay
-                        >
-                            <source src="./videos/webm_transparency.webm" type="video/webm" />
-                            Your browser does not support the video tag.
-                        </video>
+                        />
                     </div>
                 </div>
             </div>
