@@ -159,19 +159,19 @@ const MobileFeaturesMobile: React.FC<MobileFeaturesProps> = ({pageIndex}) => {
       id: 1, 
       title: 'Identify Components & Track Status in One Tap',
       description: 'See the final install location at a glance, and log progress in real time—no missing parts, no guesswork.',
-      video: './videos/mobile-features/identify-component.mp4' 
+      video: './videos/mobile-features/identify-component.webm' 
     },
     { 
       id: 2, 
       title: 'Interactive Instructions at Your Crew\'s Fingertip', 
       description: 'Provide step-by-step digital directions on any device. No more paper, no more rework.',
-      video: './videos/mobile-features/interactive-detail.mp4' 
+      video: './videos/mobile-features/interactive-detail.webm' 
     },
     { 
       id: 3,
       title: 'Connect Data to Every Part', 
       description: 'Attach safety protocols, certifications, and specs directly to each component. Something wrong? Handle QC with component-linked chat.',
-      video: './videos/mobile-features/attachment-download.mp4' 
+      video: './videos/mobile-features/attachment-download.webm' 
     }
   ];
 
@@ -276,7 +276,7 @@ const MobileFeaturesMobile: React.FC<MobileFeaturesProps> = ({pageIndex}) => {
                                 muted
                                 playsInline
                               >
-                                <source src={features[activeFeatureIndex].video} type="video/mp4" />
+                                <source src={features[activeFeatureIndex].video} type="video/webm" />
                               </video>
                             </div>
                           </div>
@@ -434,19 +434,19 @@ const MobileFeaturesDektop: React.FC<MobileFeaturesProps> = ({ pageIndex }) => {
       id: 1, 
       title: 'Identify Components & Track Status in One Tap',
       description: 'See the final install location at a glance, and log progress in real time—no missing parts, no guesswork.',
-      video: './videos/mobile-features/identify-component.mp4' 
+      video: './videos/mobile-features/identify-component.webm' 
     },
     { 
       id: 2, 
       title: 'Interactive Instructions at Your Crew\'s Fingertip', 
       description: 'Provide step-by-step digital directions on any device. No more paper, no more rework.',
-      video: './videos/mobile-features/interactive-detail.mp4' 
+      video: './videos/mobile-features/interactive-detail.webm' 
     },
     { 
       id: 3,
       title: 'Connect Data to Every Part', 
       description: 'Attach safety protocols, certifications, and specs directly to each component. Something wrong? Handle QC with component-linked chat.',
-      video: './videos/mobile-features/attachment-download.mp4' 
+      video: './videos/mobile-features/attachment-download.webm' 
     }
   ];
 
@@ -574,7 +574,7 @@ const MobileFeaturesDektop: React.FC<MobileFeaturesProps> = ({ pageIndex }) => {
                         playsInline
                         autoPlay
                     >
-                        <source src={features[activeFeatureIndex].video} type="video/mp4" />
+                        <source src={features[activeFeatureIndex].video} type="video/webm" />
                         Your browser does not support the video tag.
                     </video>
                   </div>

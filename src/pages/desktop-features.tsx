@@ -158,19 +158,19 @@ const DesktopFeaturesMobile: React.FC<DesktopPageProps> = ({pageIndex}) => {
       id: 1, 
       title: 'Real time tracking, wherever you are', 
       description: 'MaestroPilot is your digital boots on the ground: with live updates from the factory to the field.', 
-      video: './videos/desktop-features/realtime-tracking.mp4' 
+      video: './videos/desktop-features/realtime-tracking.webm' 
     },
     { 
       id: 2, 
       title: 'Coordinate Complex Schedules', 
       description: 'Use our component-linked Gantt to track installation tasks and manage intricate sequences, ensuring every piece falls into place.', 
-      video: './videos/desktop-features/complex-schedules.mp4' 
+      video: './videos/desktop-features/complex-schedules.webm' 
     },
     { 
       id: 3, 
       title: 'Generate Reports in a Click', 
       description: 'Easily produce status updates or PDFs for external stakeholders—no extra software required. ', 
-      video: './videos/desktop-features/generate-reports.mp4' 
+      video: './videos/desktop-features/generate-reports.webm' 
     },
   ];
 
@@ -275,7 +275,7 @@ const DesktopFeaturesMobile: React.FC<DesktopPageProps> = ({pageIndex}) => {
                                   muted
                                   playsInline
                                 >
-                                  <source src={features[activeFeatureIndex].video} type="video/mp4" />
+                                  <source src={features[activeFeatureIndex].video} type="video/webm" />
                                 </video>
                               </div>
                             </div>
@@ -432,19 +432,19 @@ const DesktopFeaturesDesktop: React.FC<DesktopPageProps> = ({ pageIndex }) => {
       id: 1, 
       title: 'Real time tracking, wherever you are', 
       description: 'MaestroPilot is your digital boots on the ground: with live updates from the factory to the field.', 
-      video: './videos/desktop-features/realtime-tracking.mp4' 
+      video: './videos/desktop-features/realtime-tracking.webm' 
     },
     { 
       id: 2, 
       title: 'Coordinate Complex Schedules', 
       description: 'Use our component-linked Gantt to track installation tasks and manage intricate sequences, ensuring every piece falls into place.', 
-      video: './videos/desktop-features/complex-schedules.mp4' 
+      video: './videos/desktop-features/complex-schedules.webm' 
     },
     { 
       id: 3, 
       title: 'Generate Reports in a Click', 
       description: 'Easily produce status updates or PDFs for external stakeholders—no extra software required. ', 
-      video: './videos/desktop-features/generate-reports.mp4' 
+      video: './videos/desktop-features/generate-reports.webm' 
     },
   ];
 
