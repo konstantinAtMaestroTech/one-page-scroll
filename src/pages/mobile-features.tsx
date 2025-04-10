@@ -492,7 +492,7 @@ const MobileFeaturesDektop: React.FC<MobileFeaturesProps> = ({ pageIndex }) => {
                     {features.map((item, index) => (
                       <motion.div
                         key={index}
-                        className={`relative cursor-pointer p-4`}
+                        className={`relative p-4`}
                         layout
                         animate={{
                           flex: activeFeatureIndex === index ? 2 : 1,
