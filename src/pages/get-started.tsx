@@ -217,12 +217,12 @@ const GetStartedPage: React.FC<GetStartedPageProps> = ({ pageIndex }) => {
                 </AnimatedSection>
             </AnimatedSection>}
             {isSuccess ? (
-              <div className="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-6" role="alert">
+              <div className="bg-[#1E1E1E] border-l-2 border-gray-600 text-white p-4 mb-6" role="alert">
                 <p className="font-medium">Thank you for your submission!</p>
                 <p>We'll be in touch with you shortly.</p>
                 <button 
                   onClick={() => setIsSuccess(false)}
-                  className="mt-3 bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded"
+                  className="mt-3 bg-[#1E1E1E] border border-white hover:bg-[#FF4300] text-white py-2 px-4 rounded"
                   type="button"
                 >
                   Submit Another Request
@@ -523,7 +523,7 @@ const GetStartedPage: React.FC<GetStartedPageProps> = ({ pageIndex }) => {
                       <button
                         type="submit"
                         disabled={isLoading}
-                        className={`w-full ${isMobile ? 'bg-[#FF4300] py-1' : 'bg-transparent py-3'} border-2 hover:bg-[#FF4300] text-white px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-[#FF4300] disabled:bg-blue-300`}
+                        className={`w-full ${isMobile ? 'bg-[#FF4300] py-1' : 'bg-transparent py-3'} border-2 hover:bg-[#FF4300] text-white px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-[#FF4300] disabled:bg-gray-600`}
                       >
                         {isLoading ? 'Submitting...' : isMobile ? 'Schedule a demo' :'Submit'}
                       </button>
